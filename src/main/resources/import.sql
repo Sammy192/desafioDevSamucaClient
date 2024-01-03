@@ -1,0 +1,16 @@
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('José Silva', '12345678933', 3000.00,  '2000-07-25', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Pedro Oliveira', '98765432101', 5000.00, '1995-09-12', 2);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Maria Santos', '45678901234', 7000.00, '1994-03-18', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Lucas Souza', '78901234567', 4500.00, '1993-11-05', 3);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Ana Pereira', '23456789012', 6000.00, '1997-08-23', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Carlos Silva', '54321098765', 8000.00, '1996-04-30', 2);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Isabel Santos', '67890123456', 3500.00, '1998-12-17', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Fernando Oliveira', '34567890123', 5500.00, '1999-10-02', 4);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Amanda Souza', '89012345678', 6000.00, '1992-06-14', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Ricardo Pereira', '01234567890', 4000.00, '1993-07-28', 3);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Juliana Silva', '56789012345', 7500.00, '1995-02-09', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Roberto Santos', '90123456789', 4800.00, '1994-05-21', 2);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Patricia Oliveira', '23456789011', 6200.00, '1996-09-30', 0);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Gustavo Souza', '45678901233', 5200.00, '1997-11-12', 3);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Larissa Pereira', '67890123455', 6800.00, '1999-01-25', 1);
+INSERT INTO tb_client(name, cpf, income, birth_date, children) VALUES ('Daniel Silva', '89012345677', 4200.00, '1998-04-07', 4);
