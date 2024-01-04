@@ -36,11 +36,16 @@ public class ClientService {
 
     @Transactional
     public ClientDTO insert(ClientDTO dto) {
-        Client entity = new Client();
-        copyDtoToEntity(dto, entity);
+        try {
+            Client entity = new Client();
+            copyDtoToEntity(dto, entity);
 
-        entity = repository.save(entity);
-        return new ClientDTO(entity);
+            entity = repository.save(entity);
+            return new ClientDTO(entity);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Cpf duplicado");
+        }
     }
 
     @Transactional
@@ -49,11 +54,14 @@ public class ClientService {
             Client entity = repository.getReferenceById(id);
             copyDtoToEntity(dto, entity);
 
-            entity = repository.save(entity);
+            entity = repository.saveAndFlush(entity);
             return new ClientDTO(entity);
         }
         catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Recurso não encontrado.");
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Cpf duplicado.");
         }
     }
 
