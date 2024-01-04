@@ -1,17 +1,20 @@
 package com.samucadev.desafioclient.dto;
 
 import com.samucadev.desafioclient.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class ClientDTO {
 
     private Long id;
+    @NotBlank(message = "Campo requerido")
     private String name;
 
     private String cpf;
     private Double income;
+    @PastOrPresent(message = "Data de nascimento não pode ser data futura")
     private LocalDate birthDate;
 
     private Integer children;
