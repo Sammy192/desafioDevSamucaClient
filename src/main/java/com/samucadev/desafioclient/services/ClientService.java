@@ -4,6 +4,7 @@ import com.samucadev.desafioclient.dto.ClientDTO;
 import com.samucadev.desafioclient.entities.Client;
 import com.samucadev.desafioclient.repositories.ClientRepository;
 import com.samucadev.desafioclient.services.exceptions.DatabaseException;
+import com.samucadev.desafioclient.services.exceptions.DatabaseExceptionCpfValidation;
 import com.samucadev.desafioclient.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class ClientService {
             return new ClientDTO(entity);
         }
         catch (DataIntegrityViolationException e) {
-            throw new DatabaseException("Cpf duplicado");
+            throw new DatabaseExceptionCpfValidation("O CPF que deseja inserir já existe na base de dados.");
         }
     }
 
@@ -61,7 +62,7 @@ public class ClientService {
             throw new ResourceNotFoundException("Recurso não encontrado.");
         }
         catch (DataIntegrityViolationException e) {
-            throw new DatabaseException("Cpf duplicado.");
+            throw new DatabaseExceptionCpfValidation("O CPF que deseja atualizar já existe na base de dados.");
         }
     }
 

@@ -3,6 +3,7 @@ package com.samucadev.desafioclient.controllers.handlers;
 import com.samucadev.desafioclient.dto.CustomError;
 import com.samucadev.desafioclient.dto.ValidationError;
 import com.samucadev.desafioclient.services.exceptions.DatabaseException;
+import com.samucadev.desafioclient.services.exceptions.DatabaseExceptionCpfValidation;
 import com.samucadev.desafioclient.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,14 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(DatabaseException.class)
     public ResponseEntity<CustomError> database(DatabaseException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(DatabaseExceptionCpfValidation.class)
+    public ResponseEntity<CustomError> databaseCpfValidation(DatabaseExceptionCpfValidation e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
 
