@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ClientService {
 
@@ -77,6 +79,12 @@ public class ClientService {
         catch (DataIntegrityViolationException e) {
             throw new DatabaseException("Falha de integridade referencial");
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<ClientDTO> findByCpf(String cpf) {
+        List<Client> result = repository.findByCpf(cpf);
+        return result.stream().map(x -> new ClientDTO(x)).toList();
     }
 
     private void copyDtoToEntity(ClientDTO dto, Client entity) {

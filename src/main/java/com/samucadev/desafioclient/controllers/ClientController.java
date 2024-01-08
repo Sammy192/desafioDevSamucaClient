@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -68,6 +69,13 @@ public class ClientController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @GetMapping(value = "/cpf")
+    public ResponseEntity<List<ClientDTO>> findByCpf(
+            @RequestParam(name = "cpf", defaultValue = "") String cpf) {
+        List<ClientDTO> result = service.findByCpf(cpf);
+        return ResponseEntity.ok(result);
     }
 
 }
